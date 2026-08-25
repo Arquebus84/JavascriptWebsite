@@ -1,0 +1,17 @@
+
+.Title{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.PageBody{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.PasswordButton{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+.MessageButton{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}

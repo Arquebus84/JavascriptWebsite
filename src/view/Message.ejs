@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <main>
+        <h2>Live Message Chat</h2>
+    </main>
+<body class="PageBody">
+<!-- <script src="/node_modules/socket.io-client/dist/socket.io.js"></script> -->
+    <!-- <ul id="messageList"></ul> -->
+
+    <div id="chatBox"></div>
+    <input type="text" id="messageInput" autocomplete="off" placeholder="Type your message here..."></input>
+    <button id="sendButton" onclick="sendMessage()">Send</button>
+    
+    <!-- Will be included in the website even if it's not defined in the source code -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Connect to Node.js server
+        const socket = io();
+
+        const chatBox = document.getElementById('chatBox');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+
+        // Listen for incoming messages from server
+        socket.on('server_message', (data)=>{
+            const item = document.createElement('div');
+            item.textContent = data;
+            chatBox.appendChild(item);
+            chatBox.scrollTop=chatBox.scrollHeight; // Keep view at bottom
+        });
+
+        sendButton.addEventListener('click', sendMessage);
+
+        messageInput.addEventListener("keypress", (e)=>{
+            if(e.key === "Enter") sendMessage();
+        });
+
+        // Send message when user clicks send button
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if(message !== "" && socket) {
+                // Emit message to server
+                socket.emit('client_message', message);
+                messageInput.value = ''; // Empty out text bar
+            }
+        }
+    </script>
+</body>
+</html>

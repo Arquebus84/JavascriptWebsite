@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="/css/style.css">
+
+<h1>Welcome to the Home Page</h1>
+<body class="PageBody">
+    <section>
+        <button id="passButton" class="PasswordButton">Click To Enter Password</button>
+    </section>
+    <section>
+        <button id="messageButton", class="MessageButton">Click to Enter Live Messaging</button>
+    </section>
+</body>
+
+<script>
+    const passwordButton = document.getElementById('passButton');
+    passwordButton.addEventListener('click', () => {
+        // console.log('Button clicked');
+        window.location.href = '/api/password';
+    });
+
+    const messageButton = document.getElementById('messageButton');
+    messageButton.addEventListener('click', ()=>{
+        window.location.href = '/api/message';
+    });
+</script>
