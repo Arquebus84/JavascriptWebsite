@@ -14,7 +14,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-const HOST = '10.17.90.6';
+const HOST = 'localhost';
 const PORT = 3000;
 
 // Change the view engine to ejs
@@ -60,5 +60,5 @@ io.on('connection', (socket) =>{
 //     console.log(`App running on http://${HOST}:${PORT}`);
 // });
 server.listen(PORT, HOST, ()=>{
-    console.log(`App running on ws://${HOST}:${PORT}`);
+    console.log(`App running on http://${HOST}:${PORT}`);
 });

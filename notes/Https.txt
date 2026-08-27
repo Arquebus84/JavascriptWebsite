@@ -2,3 +2,8 @@
 openssl genrsa -out key.pem 2048
  # enter info and create certificate
 openssl req -new -x509 -key key.pem -out cert.pem -days 365 -nodes
+
+# For other computers to view the website, Open a devtunnel to allow other machines to view it
+#   go to Ports, create a port and log in to GitHub.
+#   Change visibility to Public (right-click)
+#   Copy Forwarded Address to the other computer; make sure the program is running first
